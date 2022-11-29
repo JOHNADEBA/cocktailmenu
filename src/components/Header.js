@@ -27,7 +27,6 @@ const Header = () => {
 								className="menu"
 								onClick={() => {
 									fetchAllDataOnBack();
-									showMenu();
 								}}
 							>
 								<Link
@@ -54,21 +53,27 @@ const Header = () => {
 
 			{isMobile && (
 				<div className="mobile-menu">
-				{menus.map((menu, index) => {
-					return (
-						<ul key={index}>
-							<li className="menu" onClick={() => fetchAllDataOnBack()}>
-								<Link
-									className="link"
-									to={menu === "Home" ? "/" : "/" + menu.toLowerCase()}
+					{menus.map((menu, index) => {
+						return (
+							<ul key={index}>
+								<li
+									className="menu"
+									onClick={() => {
+										fetchAllDataOnBack();
+										showMenu();
+									}}
 								>
-									{menu}
-								</Link>
-							</li>
-						</ul>
-					);
-				})}
-			</div>
+									<Link
+										className="link"
+										to={menu === "Home" ? "/" : "/" + menu.toLowerCase()}
+									>
+										{menu}
+									</Link>
+								</li>
+							</ul>
+						);
+					})}
+				</div>
 			)}
 		</header>
 	);
